@@ -21,7 +21,7 @@ def handler(event, context):
 def add_item_to_dynamo_db(event, context):
 
     data = {
-        'output': json.loads(event.body)
+        'output': json.loads(event["body"])
     }
 
     return {'statusCode': 200,
@@ -29,7 +29,7 @@ def add_item_to_dynamo_db(event, context):
             'headers': {'Content-Type': 'application/json'}}
 
 
-def get_all_items_in_db(event, context):
+def get_all_items_in_db():
 
     response = table.scan()
 
@@ -37,7 +37,12 @@ def get_all_items_in_db(event, context):
         'output': response['Items']
     }
 
+    print(json.dumps(data))
+
     return {'statusCode': 200,
             'body': json.dumps(data),
             'headers': {'Content-Type': 'application/json'}}
 
+
+if __name__ == "__main__":
+    get_all_items_in_db()
