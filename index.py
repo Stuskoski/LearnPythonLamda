@@ -1,3 +1,4 @@
+from __future__ import print_function  # Python 2/3 compatibility
 import json
 import datetime
 import boto3
@@ -26,7 +27,7 @@ def getItemsInDynamoTable(event, context):
     )
 
     data = {
-        'output': response
+        'output': response['Item']
     }
     return {'statusCode': 200,
             'body': json.dumps(data),
