@@ -19,9 +19,9 @@ def handler(event, context):
 
 
 def add_item_to_dynamo_db(event, context):
-
+    print(context)
     return {'statusCode': 200,
-            'body': event,
+            'body': json.dumps(event),
             'headers': {'Content-Type': 'application/json'}}
 
 
