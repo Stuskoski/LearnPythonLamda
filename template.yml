@@ -28,10 +28,10 @@ Resources:
           Properties:
             Path: /
             Method: post
-  DynamoTest:
+  GetAllItemsInDynamoTable:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.getItemsInDynamoTable
+      Handler: index.get_all_items_in_db
       Runtime: python2.7
       Role:
         Fn::ImportValue:
@@ -40,10 +40,24 @@ Resources:
         GetEvent:
           Type: Api
           Properties:
-            Path: /getItems
+            Path: /getAllItems
             Method: get
         PostEvent:
           Type: Api
           Properties:
-            Path: /getItems
+            Path: /getAllItems
+            Method: post
+  AddItemToDynamoDb:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.add_item_to_dynamo_db
+      Runtime: python2.7
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Events:
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /addItem
             Method: post
