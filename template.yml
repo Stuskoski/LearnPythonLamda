@@ -28,3 +28,22 @@ Resources:
           Properties:
             Path: /
             Method: post
+  DynamoTest:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.getItemsInDynamoTable
+      Runtime: python2.7
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /getItems
+            Method: get
+        PostEvent:
+          Type: Api
+          Properties:
+            Path: /getItems
+            Method: post
