@@ -41,7 +41,9 @@ def get_all_items_in_db(event, context):
 def get_test_html(event, context):
 
     f = open("html/testingHtml.html")
+    data = f.read()
+    f.close()
 
     return {'statusCode': 200,
-            'body': f.read(),
+            'body': data,
             'headers': {'Content-Type': 'text/html'}}

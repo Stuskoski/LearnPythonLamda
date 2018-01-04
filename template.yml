@@ -61,3 +61,17 @@ Resources:
           Properties:
             Path: /addItem
             Method: post
+  GetTestHtml:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.get_test_html
+      Runtime: python2.7
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /getHtml
+            Method: get
