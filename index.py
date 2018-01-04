@@ -40,7 +40,7 @@ def get_all_items_in_db(event, context):
 
 def get_test_html(event, context):
 
-    f = open("html/testingHtml.html")
+    f = open("public/index.html")
     data = f.read()
     f.close()
 
