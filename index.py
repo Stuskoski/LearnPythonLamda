@@ -36,14 +36,3 @@ def get_all_items_in_db(event, context):
     return {'statusCode': 200,
             'body': json.dumps(data),
             'headers': {'Content-Type': 'application/json'}}
-
-
-def get_test_html(event, context):
-
-    f = open("public/index.html")
-    data = f.read()
-    f.close()
-
-    return {'statusCode': 200,
-            'body': data,
-            'headers': {'Content-Type': 'text/html'}}
