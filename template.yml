@@ -23,6 +23,7 @@ Resources:
           Properties:
             Path: /
             Method: get
+            cors: true
         PostEvent:
           Type: Api
           Properties:
