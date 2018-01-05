@@ -16,7 +16,9 @@ def handler(event, context):
     return {'statusCode': 200,
             'body': json.dumps(data),
             'headers': {'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'}}
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+            'Access-Control-Allow-Methods': 'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'}}
 
 
 def add_item_to_dynamo_db(event, context):
